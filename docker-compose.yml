@@ -29,7 +29,7 @@ services:
       - "--docker.swarmmode"
       - "--docker.domain=${WEBPROXY_CONF_DOMAIN:-domain.com}"
       - "--docker.watch"
-      - "--logLevel=DEBUG"
+      - "--logLevel=INFO"
     deploy:
       placement:
         constraints:
