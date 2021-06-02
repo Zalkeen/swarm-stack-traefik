@@ -12,6 +12,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       #- ./traefik.toml:/traefik.toml
       - ./volumes/acme.json:/etc/traefik/acme/acme.json
+      - ./volumes/access.log:/var/log/access.log
     command:
       - "--api"
       - "--insecureSkipVerify=true"
@@ -29,6 +30,8 @@ services:
       - "--docker.swarmmode"
       - "--docker.domain=${WEBPROXY_CONF_DOMAIN:-domain.com}"
       - "--docker.watch"
+      - "--accesslog=true"
+      - "--accesslog.filepath=/var/log/access.log"
       - "--logLevel=INFO"
     deploy:
       placement:
